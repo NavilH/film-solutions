@@ -1,0 +1,456 @@
+(x2...> )) FROM trending_movies;
+[
+    {
+        "movie_id": 1104845,
+        "title": "Plankton: The Movie",
+        "poster_url": "https://image.tmdb.org/t/p/w500/hGaUNLF5VZbg9ovPTyjm9Rv5xWz.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 822119,
+        "title": "Captain America: Brave New World",
+        "poster_url": "https://image.tmdb.org/t/p/w500/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1064213,
+        "title": "Anora",
+        "poster_url": "https://image.tmdb.org/t/p/w500/qh8m8Udz0sCa5gy9VaqfHPh0yPM.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 696506,
+        "title": "Mickey 17",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1418522,
+        "title": "Delicious",
+        "poster_url": "https://image.tmdb.org/t/p/w500/3W1PZYEiDXWLLjLCMUbRPfjHxmq.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 823219,
+        "title": "Flow",
+        "poster_url": "https://image.tmdb.org/t/p/w500/imKSymKBK7o73sajciEmndJoVkR.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1084199,
+        "title": "Companion",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oCoTgC3UyWGfyQ9thE10ulWR7bn.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1204892,
+        "title": "Picture This",
+        "poster_url": "https://image.tmdb.org/t/p/w500/r8mUV5bJlUQrco0XWYHUiSVzgdh.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1302916,
+        "title": "Heart Eyes",
+        "poster_url": "https://image.tmdb.org/t/p/w500/ebqttF1Vjgde6uSFBEw9mta7Hd3.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1216780,
+        "title": "Nadaaniyan",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oKOBmI4IA7NJ9MQngDIQUyv1i0I.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 933260,
+        "title": "The Substance",
+        "poster_url": "https://image.tmdb.org/t/p/w500/cGm2qnmXx9tFabmzEIkJZjCJdQd.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 974576,
+        "title": "Conclave",
+        "poster_url": "https://image.tmdb.org/t/p/w500/m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 950396,
+        "title": "The Gorge",
+        "poster_url": "https://image.tmdb.org/t/p/w500/7iMBZzVZtG0oBug4TfqDb9ZxAOa.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 402431,
+        "title": "Wicked",
+        "poster_url": "https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 558449,
+        "title": "Gladiator II",
+        "poster_url": "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1426486,
+        "title": "Chaos: The Manson Murders",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lcWOKxTVZybE8aRUhzkKokU2s0s.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1241982,
+        "title": "Moana 2",
+        "poster_url": "https://image.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 549509,
+        "title": "The Brutalist",
+        "poster_url": "https://image.tmdb.org/t/p/w500/gl16UFazRs5Xv3VS8YKhRqQRY8T.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 604685,
+        "title": "Den of Thieves 2: Pantera",
+        "poster_url": "https://image.tmdb.org/t/p/w500/p6Zz0gETvkC33Pst1h6sh9Js6x.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 661539,
+        "title": "A Complete Unknown",
+        "poster_url": "https://image.tmdb.org/t/p/w500/llWl3GtNoXosbvYboelmoT459NM.jpg",
+        "timestamp": "2025-03-09 04:52:05"
+    },
+    {
+        "movie_id": 1104845,
+        "title": "Plankton: The Movie",
+        "poster_url": "https://image.tmdb.org/t/p/w500/hGaUNLF5VZbg9ovPTyjm9Rv5xWz.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 822119,
+        "title": "Captain America: Brave New World",
+        "poster_url": "https://image.tmdb.org/t/p/w500/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1064213,
+        "title": "Anora",
+        "poster_url": "https://image.tmdb.org/t/p/w500/qh8m8Udz0sCa5gy9VaqfHPh0yPM.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 696506,
+        "title": "Mickey 17",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1418522,
+        "title": "Delicious",
+        "poster_url": "https://image.tmdb.org/t/p/w500/3W1PZYEiDXWLLjLCMUbRPfjHxmq.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 823219,
+        "title": "Flow",
+        "poster_url": "https://image.tmdb.org/t/p/w500/imKSymKBK7o73sajciEmndJoVkR.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1084199,
+        "title": "Companion",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oCoTgC3UyWGfyQ9thE10ulWR7bn.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1204892,
+        "title": "Picture This",
+        "poster_url": "https://image.tmdb.org/t/p/w500/r8mUV5bJlUQrco0XWYHUiSVzgdh.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1302916,
+        "title": "Heart Eyes",
+        "poster_url": "https://image.tmdb.org/t/p/w500/ebqttF1Vjgde6uSFBEw9mta7Hd3.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1216780,
+        "title": "Nadaaniyan",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oKOBmI4IA7NJ9MQngDIQUyv1i0I.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 933260,
+        "title": "The Substance",
+        "poster_url": "https://image.tmdb.org/t/p/w500/cGm2qnmXx9tFabmzEIkJZjCJdQd.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 974576,
+        "title": "Conclave",
+        "poster_url": "https://image.tmdb.org/t/p/w500/m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 950396,
+        "title": "The Gorge",
+        "poster_url": "https://image.tmdb.org/t/p/w500/7iMBZzVZtG0oBug4TfqDb9ZxAOa.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 402431,
+        "title": "Wicked",
+        "poster_url": "https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 558449,
+        "title": "Gladiator II",
+        "poster_url": "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1426486,
+        "title": "Chaos: The Manson Murders",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lcWOKxTVZybE8aRUhzkKokU2s0s.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 1241982,
+        "title": "Moana 2",
+        "poster_url": "https://image.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 549509,
+        "title": "The Brutalist",
+        "poster_url": "https://image.tmdb.org/t/p/w500/gl16UFazRs5Xv3VS8YKhRqQRY8T.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 604685,
+        "title": "Den of Thieves 2: Pantera",
+        "poster_url": "https://image.tmdb.org/t/p/w500/p6Zz0gETvkC33Pst1h6sh9Js6x.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 661539,
+        "title": "A Complete Unknown",
+        "poster_url": "https://image.tmdb.org/t/p/w500/llWl3GtNoXosbvYboelmoT459NM.jpg",
+        "timestamp": "2025-03-09 04:55:01"
+    },
+    {
+        "movie_id": 822119,
+        "title": "Captain America: Brave New World",
+        "poster_url": "https://image.tmdb.org/t/p/w500/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1104845,
+        "title": "Plankton: The Movie",
+        "poster_url": "https://image.tmdb.org/t/p/w500/hGaUNLF5VZbg9ovPTyjm9Rv5xWz.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1064213,
+        "title": "Anora",
+        "poster_url": "https://image.tmdb.org/t/p/w500/qh8m8Udz0sCa5gy9VaqfHPh0yPM.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 696506,
+        "title": "Mickey 17",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1418522,
+        "title": "Delicious",
+        "poster_url": "https://image.tmdb.org/t/p/w500/3W1PZYEiDXWLLjLCMUbRPfjHxmq.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 823219,
+        "title": "Flow",
+        "poster_url": "https://image.tmdb.org/t/p/w500/imKSymKBK7o73sajciEmndJoVkR.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1084199,
+        "title": "Companion",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oCoTgC3UyWGfyQ9thE10ulWR7bn.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1204892,
+        "title": "Picture This",
+        "poster_url": "https://image.tmdb.org/t/p/w500/r8mUV5bJlUQrco0XWYHUiSVzgdh.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1216780,
+        "title": "Nadaaniyan",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oKOBmI4IA7NJ9MQngDIQUyv1i0I.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1302916,
+        "title": "Heart Eyes",
+        "poster_url": "https://image.tmdb.org/t/p/w500/ebqttF1Vjgde6uSFBEw9mta7Hd3.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 974576,
+        "title": "Conclave",
+        "poster_url": "https://image.tmdb.org/t/p/w500/m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 933260,
+        "title": "The Substance",
+        "poster_url": "https://image.tmdb.org/t/p/w500/cGm2qnmXx9tFabmzEIkJZjCJdQd.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 950396,
+        "title": "The Gorge",
+        "poster_url": "https://image.tmdb.org/t/p/w500/7iMBZzVZtG0oBug4TfqDb9ZxAOa.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 402431,
+        "title": "Wicked",
+        "poster_url": "https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 558449,
+        "title": "Gladiator II",
+        "poster_url": "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1426486,
+        "title": "Chaos: The Manson Murders",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lcWOKxTVZybE8aRUhzkKokU2s0s.jpg",
+        "timestamp": "2025-03-09 05:03:25"
+    },
+    {
+        "movie_id": 1241982,
+        "title": "Moana 2",
+        "poster_url": "https://image.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg",
+        "timestamp": "2025-03-09 05:03:26"
+    },
+    {
+        "movie_id": 549509,
+        "title": "The Brutalist",
+        "poster_url": "https://image.tmdb.org/t/p/w500/gl16UFazRs5Xv3VS8YKhRqQRY8T.jpg",
+        "timestamp": "2025-03-09 05:03:26"
+    },
+    {
+        "movie_id": 604685,
+        "title": "Den of Thieves 2: Pantera",
+        "poster_url": "https://image.tmdb.org/t/p/w500/p6Zz0gETvkC33Pst1h6sh9Js6x.jpg",
+        "timestamp": "2025-03-09 05:03:26"
+    },
+    {
+        "movie_id": 661539,
+        "title": "A Complete Unknown",
+        "poster_url": "https://image.tmdb.org/t/p/w500/llWl3GtNoXosbvYboelmoT459NM.jpg",
+        "timestamp": "2025-03-09 05:03:26"
+    },
+    {
+        "movie_id": 1104845,
+        "title": "Plankton: The Movie",
+        "poster_url": "https://image.tmdb.org/t/p/w500/hGaUNLF5VZbg9ovPTyjm9Rv5xWz.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 822119,
+        "title": "Captain America: Brave New World",
+        "poster_url": "https://image.tmdb.org/t/p/w500/pzIddUEMWhWzfvLI3TwxUG2wGoi.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1064213,
+        "title": "Anora",
+        "poster_url": "https://image.tmdb.org/t/p/w500/qh8m8Udz0sCa5gy9VaqfHPh0yPM.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 696506,
+        "title": "Mickey 17",
+        "poster_url": "https://image.tmdb.org/t/p/w500/lrCcovGRcuv8Z1v3ae1ZH5Ird05.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1418522,
+        "title": "Delicious",
+        "poster_url": "https://image.tmdb.org/t/p/w500/3W1PZYEiDXWLLjLCMUbRPfjHxmq.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 823219,
+        "title": "Flow",
+        "poster_url": "https://image.tmdb.org/t/p/w500/imKSymKBK7o73sajciEmndJoVkR.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1084199,
+        "title": "Companion",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oCoTgC3UyWGfyQ9thE10ulWR7bn.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1204892,
+        "title": "Picture This",
+        "poster_url": "https://image.tmdb.org/t/p/w500/r8mUV5bJlUQrco0XWYHUiSVzgdh.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1302916,
+        "title": "Heart Eyes",
+        "poster_url": "https://image.tmdb.org/t/p/w500/ebqttF1Vjgde6uSFBEw9mta7Hd3.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1216780,
+        "title": "Nadaaniyan",
+        "poster_url": "https://image.tmdb.org/t/p/w500/oKOBmI4IA7NJ9MQngDIQUyv1i0I.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 974576,
+        "title": "Conclave",
+        "poster_url": "https://image.tmdb.org/t/p/w500/m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 933260,
+        "title": "The Substance",
+        "poster_url": "https://image.tmdb.org/t/p/w500/cGm2qnmXx9tFabmzEIkJZjCJdQd.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 950396,
+        "title": "The Gorge",
+        "poster_url": "https://image.tmdb.org/t/p/w500/7iMBZzVZtG0oBug4TfqDb9ZxAOa.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 402431,
+        "title": "Wicked",
+        "poster_url": "https://image.tmdb.org/t/p/w500/xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 558449,
+        "title": "Gladiator II",
+        "poster_url": "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        "timestamp": "2025-03-09 05:07:08"
+    },
+    {
+        "movie_id": 1426486,
+        "title":"Chaos: The Manson 
+Murders","poster_url":"https: //image.tmdb.org/t/p/w500/lcWOKxTVZybE8aRUhzkKokU2s0s.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":1241982,"title":"Moana 2","poster_url":"https://image.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":549509,"title":"The Brutalist","poster_url":"https://image.tmdb.org/t/p/w500/gl16UFazRs5Xv3VS8YKhRqQRY8T.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":604685,"title":"Den of Thieves 2: Pantera","poster_url":"https://image.tmdb.org/t/p/w500/p6Zz0gETvkC33Pst1h6sh9Js6ge.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg","timestamp":"2025-03-09 05:07:08"},{"moge.tmdb.org/t/p/w500/aLVkiINlIeCkcZIzb7XHzPYgO6L.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":549509,"title":"The Brutalist","poster_url":"https://image.tmdb.org/t/p/w500/gl16UFazRs5Xv3VS8YKhRqQRY8T.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":604685,"title":"Den of Thieves 2: Pantera","poster_url":"https://image.tmdb.org/t/p/w500/p6Zz0gETvkC33Pst1h6sh9Js6x.jpg","timestamp":"2025-03-09 05:07:08"},{"movie_id":661539,"title":"A Complete Unknown","poster_url":"https://image.tmdb.org/t/p/w500/llWl3GtNoXosbvYboelmoT459NM.jpg","timestamp":"2025-03-09 05:07:08"}]
