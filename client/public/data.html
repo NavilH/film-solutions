@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Solutions - Small Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            margin: 20px;
+        }
+        pre {
+            background: #222;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            max-width: 600px;
+            margin: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎬 Film Solutions - Small Data</h1>
+    <h3>Watchlist Data</h3>
+    <pre id="data"></pre>
+
+    <script>
+        fetch("sample_data.json")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("data").textContent = JSON.stringify(data, null, 4);
+            })
+            .catch(error => console.error("Error loading data:", error));
+    </script>
+</body>
+</html>

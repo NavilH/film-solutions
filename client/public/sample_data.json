@@ -1,0 +1,14 @@
+[
+    {
+        "user_id": 1,
+        "movie_id": 550,
+        "title": "Fight Club",
+        "poster_url": "https://image.tmdb.org/t/p/w500/example.jpg"
+    },
+    {
+        "user_id": 1,
+        "movie_id": 680,
+        "title": "Pulp Fiction",
+        "poster_url": "https://image.tmdb.org/t/p/w500/example.jpg"
+    }
+]
