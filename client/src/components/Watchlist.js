@@ -6,7 +6,7 @@ const Watchlist = () => {
     const userId = 1; // Replace with dynamic user ID if needed
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/users/${userId}/watchlist`)
+        axios.get(`http://localhost:5001/api/users/${userId}/watchlist`)
             .then(response => setWatchlist(response.data))
             .catch(error => console.error("Error fetching watchlist:", error));
     }, []);

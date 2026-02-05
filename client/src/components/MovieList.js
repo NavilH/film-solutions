@@ -6,7 +6,7 @@ const MovieList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/api/movies/trending")
+        axios.get("http://localhost:5001/api/movies/trending/saved")
             .then(response => {
                 setMovies(response.data);
                 setLoading(false);
@@ -18,7 +18,7 @@ const MovieList = () => {
     }, []);
 
     const addToWatchlist = (movie) => {
-        axios.post(`http://localhost:5000/api/users/1/watchlist`, {
+        axios.post(`http://localhost:5001/api/users/1/watchlist`, {
             movie_id: movie.id,
             title: movie.title,
             poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`

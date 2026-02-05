@@ -1,62 +1,51 @@
-require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
+const db = require("../db/db"); // Import SQLite database connection
 const router = express.Router();
 
-const TMDB_API_KEY = process.env.TMDB_API_KEY;
-const TMDB_BASE_URL = "https://api.themoviedb.org/3";
+const TMDB_API_KEY = process.env.TMDB_API_KEY; // Get API key from .env file
 
-/**
- * GET /api/movies/trending
- * Fetch trending movies from TMDB
- */
+// Fetch and store trending movies
 router.get("/trending", async (req, res) => {
     try {
-        const response = await axios.get(`${TMDB_BASE_URL}/trending/movie/day`, {
-            params: { api_key: TMDB_API_KEY },
+        const response = await axios.get(`https://api.themoviedb.org/3/trending/movie/day`, {
+            params: { api_key: TMDB_API_KEY }
         });
-        res.json(response.data.results);
+
+        const movies = response.data.results;
+
+        // Save trending movies to SQLite
+        db.serialize(() => {
+            movies.forEach(movie => {
+                db.run(
+                    `INSERT INTO trending_movies (movie_id, title, poster_url) 
+                    VALUES (?, ?, ?)`,
+                    [movie.id, movie.title, `https://image.tmdb.org/t/p/w500${movie.poster_path}`],
+                    (err) => {
+                        if (err) {
+                            console.error("Error saving movie:", err.message);
+                        }
+                    }
+                );
+            });
+        });
+
+        res.json(movies); // Return trending movies to the frontend
     } catch (error) {
         console.error("Error fetching trending movies:", error);
-        res.status(500).json({ error: "Unable to fetch trending movies" });
+        res.status(500).json({ error: "Failed to fetch trending movies" });
     }
 });
 
-/**
- * GET /api/movies/search
- * Search movies by title
- */
-router.get("/search", async (req, res) => {
-    const { query } = req.query;
-    if (!query) return res.status(400).json({ error: "Query parameter is required" });
-
-    try {
-        const response = await axios.get(`${TMDB_BASE_URL}/search/movie`, {
-            params: { api_key: TMDB_API_KEY, query },
-        });
-        res.json(response.data.results);
-    } catch (error) {
-        console.error("Error searching movies:", error);
-        res.status(500).json({ error: "Unable to search movies" });
-    }
-});
-
-/**
- * GET /api/movies/:id
- * Fetch details for a specific movie
- */
-router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-
-    try {
-        const response = await axios.get(`${TMDB_BASE_URL}/movie/${id}`, {
-            params: { api_key: TMDB_API_KEY },
-        });
-        res.json(response.data);
-    } catch (error) {
-        console.error("Error fetching movie details:", error);
-        res.status(500).json({ error: "Unable to fetch movie details" });
-    }
+// Fetch saved trending movies from SQLite
+router.get("/trending/saved", (req, res) => {
+    db.all("SELECT * FROM trending_movies ORDER BY timestamp DESC", [], (err, rows) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+        res.json(rows);
+    });
 });
 
 module.exports = router;

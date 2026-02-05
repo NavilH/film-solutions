@@ -84,4 +84,43 @@ router.delete("/:user_id/watchlist/:watchlist_id", (req, res) => {
     });
 });
 
+const axios = require("axios"); // add to the top if not already imported
+
+router.get("/:user_id/recommendations", async (req, res) => {
+  const { user_id } = req.params;
+
+  db.all("SELECT movie_id FROM watchlist WHERE user_id = ?", [user_id], async (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (rows.length === 0) return res.json([]);
+
+    const TMDB_API_KEY = process.env.TMDB_API_KEY;
+
+    try {
+      const recommendedMovies = [];
+
+      for (const row of rows) {
+        const response = await axios.get(`https://api.themoviedb.org/3/movie/${row.movie_id}/similar`, {
+          params: { api_key: TMDB_API_KEY }
+        });
+
+        recommendedMovies.push(...response.data.results.slice(0, 2)); // Take top 2 from each
+      }
+
+      // Optional: remove duplicates
+      const seen = new Set();
+      const uniqueRecs = recommendedMovies.filter(movie => {
+        if (seen.has(movie.id)) return false;
+        seen.add(movie.id);
+        return true;
+      });
+
+      res.json(uniqueRecs);
+    } catch (error) {
+      console.error("TMDB recommendation fetch failed:", error.message);
+      res.status(500).json({ error: "Failed to fetch recommendations" });
+    }
+  });
+});
+
+
 module.exports = router;
