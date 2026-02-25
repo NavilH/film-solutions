@@ -21,7 +21,7 @@ db.all("SELECT DISTINCT movie_id FROM trending_movies", async (err, rows) => {
       const genres = response.data.genres || [];
 
       for (const genre of genres) {
-        db.run("INSERT INTO movie_genres (movie_id, genre) VALUES (?, ?)", [movie_id, genre.name]);
+        db.run("INSERT INTO movie_genres_history (movie_id, genre) VALUES (?, ?)", [movie_id, genre.name]);
       }
 
       console.log(`✅ Genres saved for movie ${movie_id}`);

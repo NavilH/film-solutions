@@ -38,23 +38,29 @@ router.get("/:user_id", (req, res) => {
  * Add a movie to the user's watchlist
  */
 router.post("/:user_id/watchlist", (req, res) => {
-    const { user_id } = req.params;
-    const { movie_id, title, poster_url } = req.body;
+  const userId = Number(req.params.user_id);
+  const { movie_id, title, poster_url } = req.body;
 
-    if (!movie_id || !title || !poster_url) {
-        return res.status(400).json({ error: "All movie details are required" });
+  if (!movie_id || !title || !poster_url) {
+    return res.status(400).json({ error: "All movie details are required" });
+  }
+
+  db.run(
+    `INSERT OR IGNORE INTO watchlist (user_id, movie_id, title, poster_url)
+     VALUES (?, ?, ?, ?)`,
+    [userId, movie_id, title, poster_url],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+
+      if (this.changes === 0) {
+        return res.status(200).json({ message: "Already in watchlist" });
+      }
+
+      return res.status(201).json({ message: "Added to watchlist" });
     }
-
-    db.run(
-        "INSERT INTO watchlist (user_id, movie_id, title, poster_url) VALUES (?, ?, ?, ?)",
-        [user_id, movie_id, title, poster_url],
-        function (err) {
-            if (err) return res.status(500).json({ error: err.message });
-
-            res.json({ watchlist_id: this.lastID, user_id, movie_id, title, poster_url });
-        }
-    );
+  );
 });
+
 
 /**
  * GET /api/users/:user_id/watchlist

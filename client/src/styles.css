@@ -1,94 +1,302 @@
-/* General Page Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+/* =========================
+   Film Solutions - Modern UI
+   ========================= */
+
+/* ---- Theme tokens ---- */
+:root {
+  --bg: #0b0f17;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.09);
+  --border: rgba(255, 255, 255, 0.10);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.68);
+  --muted-2: rgba(255, 255, 255, 0.52);
+  --accent: #e50914;
+
+  --radius: 16px;
+  --radius-sm: 12px;
+  --shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.35);
+
+  --maxw: 1200px;
 }
 
-/* Navbar Styling */
+/* ---- Global reset-ish ---- */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(229, 9, 20, 0.15), transparent 55%),
+    radial-gradient(900px 500px at 85% 0%, rgba(88, 101, 242, 0.12), transparent 55%),
+    var(--bg);
+  line-height: 1.5;
+}
+
+/* Optional: nicer text rendering */
+body, button, input {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---- Top Nav ---- */
 nav {
-    background-color: #1f1f1f;
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+
+  /* translucent + blur for modern feel */
+  background: rgba(10, 14, 22, 0.72);
+  backdrop-filter: blur(10px);
 }
 
 nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    transition: background 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border-radius: 999px;
+
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+
+  transition: transform 120ms ease, background 120ms ease, color 120ms ease, border-color 120ms ease;
+  border: 1px solid transparent;
 }
 
 nav a:hover {
-    background-color: #e50914;
-    border-radius: 5px;
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--border);
+  transform: translateY(-1px);
 }
 
-/* Movie Grid */
-.movie-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+/* Active NavLink (React Router sets aria-current="page") */
+nav a[aria-current="page"] {
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(229, 9, 20, 0.22), rgba(229, 9, 20, 0.10));
+  border-color: rgba(229, 9, 20, 0.35);
 }
 
-/* Movie Card */
-.movie-card {
-    background-color: #222;
-    padding: 15px;
-    border-radius: 10px;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
+/* ---- Page container helper (recommended) ---- */
+.page {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 22px 16px 48px;
 }
 
-.movie-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.2);
+/* Headings */
+h1, h2, h3, h4 {
+  margin: 0 0 10px;
+  letter-spacing: -0.02em;
 }
 
-.movie-card img {
-    width: 100%;
-    border-radius: 5px;
+h2 {
+  font-size: 26px;
 }
 
-.movie-card h3 {
-    font-size: 16px;
-    margin: 10px 0;
+h3 {
+  font-size: 16px;
+  color: var(--text);
 }
 
-/* Buttons */
+h4 {
+  font-size: 14px;
+  color: var(--text);
+}
+
+p {
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+/* ---- Buttons ---- */
 button {
-    background-color: #e50914;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
-    margin-top: 10px;
-    transition: background 0.3s ease;
+  appearance: none;
+  border: 1px solid rgba(229, 9, 20, 0.35);
+  background: linear-gradient(180deg, rgba(229, 9, 20, 0.95), rgba(229, 9, 20, 0.75));
+  color: white;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  font-weight: 700;
+  font-size: 14px;
+
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+  box-shadow: 0 10px 24px rgba(229, 9, 20, 0.18);
 }
 
 button:hover {
-    background-color: #b20710;
+  transform: translateY(-1px);
+  filter: brightness(1.05);
 }
+
+button:active {
+  transform: translateY(0px);
+  filter: brightness(0.98);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---- Accessible focus ---- */
+nav a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid rgba(229, 9, 20, 0.85);
+  outline-offset: 3px;
+}
+
+/* ---- Movie grid + cards ---- */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  padding: 12px 0 0;
+}
+
+.movie-card {
+  text-align: left;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.045));
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+
+  transform: translateZ(0);
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+}
+
+.movie-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.movie-card .card-body {
+  padding: 12px 12px 14px;
+}
+
+.movie-card h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.movie-card .meta {
+  font-size: 12px;
+  color: var(--muted-2);
+}
+
+/* ---- Stats dashboard ---- */
 .stats-container {
-    padding: 2rem;
-    background-color: #121212;
-    color: white;
+  /* keep for backward compatibility, but prefer wrapping routes in .page */
+  padding: 0;
+}
+
+.stats-card {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.045));
+  box-shadow: var(--shadow);
+  padding: 16px;
+  text-align: left;
+}
+
+.stats-card + .stats-card {
+  margin-top: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.chart-wrap {
+  margin-top: 10px;
+}
+
+.error-text {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+/* ---- Small helper badges (optional) ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ---- Responsive tweaks ---- */
+@media (min-width: 900px) {
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
   }
-  
+}
+
+@media (max-width: 560px) {
+  nav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+header {
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+

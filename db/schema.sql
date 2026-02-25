@@ -11,3 +11,17 @@ CREATE TABLE IF NOT EXISTS watchlist (
     poster_url TEXT,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
+CREATE TABLE IF NOT EXISTS trending_movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    title TEXT,
+    poster_url TEXT,
+    fetched_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS movie_genres (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    movie_id INTEGER,
+    genre TEXT,
+    fetched_at TEXT
+);
