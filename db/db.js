@@ -22,7 +22,7 @@ db.serialize(() => {
     `);
     
     db.run(`
-        CREATE TABLE IF NOT EXISTS watchlist (
+        CREATE TABLE IF NOT EXISTS liked (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             movie_id INTEGER,

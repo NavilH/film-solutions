@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-const API_BASE = (process.env.REACT_APP_API_URL || "http://localhost:5001").replace(/\/$/, "");
 
 const Recommendations = ({ userId = 1 }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_BASE}/api/users/${userId}/recommendations`)
+    axios.get("/api/users/${userId}/recommendations")
       .then(response => setMovies(response.data))
       .catch(error => console.error("Error fetching recommendations:", error));
   }, [userId]);
@@ -16,7 +15,7 @@ const Recommendations = ({ userId = 1 }) => {
       <h2>🎯 Recommended for You</h2>
       <div className="movie-grid">
         {movies.length === 0 ? (
-          <p>No recommendations yet. Add movies to your watchlist!</p>
+          <p>No recommendations yet. Like some movies!</p>
         ) : (
           movies.map(movie => (
             <div key={movie.id} className="movie-card">

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
-const API_BASE = (process.env.REACT_APP_URL || "http://localhost:5001").replace(/\/$/,"");
-const MovieList = () => {
+
+const Movies = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.get(`${API_BASE}/api/stats/current-trending`)
+        axios.get("/api/stats/current-trending")
             .then(response => {
                 setMovies(response.data);
                 setLoading(false);
@@ -21,7 +21,7 @@ const MovieList = () => {
 const [loadingId, setLoadingId] = useState(null);
 const [addedIds, setAddedIds] = useState(new Set());
 
-const addToWatchlist = async (movie) => {
+const addToLiked = async (movie) => {
   const movieId = movie.movie_id ?? movie.id;
 
   if (addedIds.has(movieId)) return;
@@ -30,7 +30,7 @@ const addToWatchlist = async (movie) => {
     setLoadingId(movieId);
 
     const response = await axios.post(
-      `http://localhost:5001/api/users/1/watchlist`,
+      `/api/users/1/liked`,
       {
         movie_id: movieId,
         title: movie.title,
@@ -38,16 +38,16 @@ const addToWatchlist = async (movie) => {
       }
     );
 
-    if (response.data.message === "Already in watchlist") {
-      toast("Already in watchlist", { icon: "ℹ️" });
+    if (response.data.message === "Already liked") {
+      toast("Already liked", { icon: "ℹ️" });
     } else {
       setAddedIds(prev => new Set(prev).add(movieId));
-      toast.success("Added to watchlist");
+      toast.success("Added to Liked");
     }
 
   } catch (error) {
-    console.error("Error adding to watchlist:", error);
-    toast.error("Could not add to watchlist");
+    console.error("Error adding to Liked:", error);
+    toast.error("Could not add to Liked");
   } finally {
     setLoadingId(null);
   }
@@ -64,14 +64,14 @@ const addToWatchlist = async (movie) => {
                             <img src={movie.poster_url} alt={movie.title} loading="lazy" />
                             <h3>{movie.title}</h3>
                             <button
-  onClick={() => addToWatchlist(movie)}
+  onClick={() => addToLiked(movie)}
   disabled={loadingId === (movie.movie_id ?? movie.id) || addedIds.has(movie.movie_id ?? movie.id)}
 >
   {loadingId === (movie.movie_id ?? movie.id)
-    ? "Adding..."
+    ? "Liking..."
     : addedIds.has(movie.movie_id ?? movie.id)
-    ? "Added ✓"
-    : "Add to Watchlist"}
+    ? "❤️Liked"
+    : "🤍Like"}
 </button>
 
                         </div>
@@ -82,4 +82,4 @@ const addToWatchlist = async (movie) => {
     );
 };
 
-export default MovieList;
+export default Movies;

@@ -10,9 +10,6 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-const API_BASE =
-  process.env.REACT_APP_API_URL?.replace(/\/$/, "") || "http://localhost:5001";
-
 const WeeklyTrendChart = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +23,7 @@ const WeeklyTrendChart = () => {
         setLoading(true);
         setError("");
 
-        const res = await axios.get(`${API_BASE}/api/stats/weekly-trending`);
+        const res = await axios.get(`/api/stats/weekly-trending`);
 
         if (isMounted) {
           setData(res.data || []);

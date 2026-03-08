@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 
-const API_BASE =
-  process.env.REACT_APP_API_URL?.replace(/\/$/, "") || "http://localhost:5001";
-
 const COLORS = [
   "#0088FE",
   "#00C49F",
@@ -29,7 +26,7 @@ const GenrePieChart = () => {
         setLoading(true);
         setError("");
 
-        const res = await axios.get(`${API_BASE}/api/stats/genre-distribution`);
+        const res = await axios.get(`/api/stats/genre-distribution`);
 
         if (isMounted) setData(res.data || []);
       } catch (err) {

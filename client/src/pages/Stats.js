@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import WeeklyTrendChart from "./WeeklyTrendChart";
-import GenrePieChart from "./GenrePieChart";
+import WeeklyTrendChart from "../components/WeeklyTrendChart";
+import GenrePieChart from "../components/GenrePieChart";
 import {
   BarChart,
   Bar,
@@ -11,9 +11,6 @@ import {
   CartesianGrid,
   ResponsiveContainer
 } from "recharts";
-
-const API_BASE =
-  process.env.REACT_APP_API_URL?.replace(/\/$/, "") || "http://localhost:5001";
 
 const Stats = () => {
   const [data, setData] = useState([]);
@@ -28,7 +25,7 @@ const Stats = () => {
         setLoading(true);
         setError("");
 
-        const res = await axios.get(`${API_BASE}/api/stats/trending-count`);
+        const res = await axios.get("/api/stats/trending-count");
 
         if (isMounted) {
           setData(res.data || []);

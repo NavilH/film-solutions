@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 
-import MovieList from "./components/MovieList";
-import Watchlist from "./components/Watchlist";
-import Recommendations from "./components/Recommendations";
-import Stats from "./components/Stats";
+import MovieList from "./pages/Movies";
+import Liked from "./pages/Liked";
+import Recommendations from "./pages/Recommendations";
+import Stats from "./pages/Stats";
 import { Toaster } from "react-hot-toast";
 
 import "./styles.css";
@@ -33,8 +33,8 @@ const App = () => {
               Home
             </NavLink>
 
-            <NavLink to="/watchlist" className={linkClass}>
-              Watchlist
+            <NavLink to="/liked" className={linkClass}>
+              Liked
             </NavLink>
 
             <NavLink to="/recommendations" className={linkClass}>
@@ -51,7 +51,7 @@ const App = () => {
         <div className="page">
         <Routes>
           <Route path="/" element={<MovieList />} />
-          <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/liked" element={<Liked />} />
           <Route path="/recommendations" element={<Recommendations />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="*" element={<h2>404 — Page Not Found</h2>} />
