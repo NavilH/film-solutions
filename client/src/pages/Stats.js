@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE } from "../config";
 import WeeklyTrendChart from "../components/WeeklyTrendChart";
 import GenrePieChart from "../components/GenrePieChart";
 import {
@@ -25,7 +26,7 @@ const Stats = () => {
         setLoading(true);
         setError("");
 
-        const res = await axios.get("/api/stats/trending-count");
+        const res = await axios.get(`${API_BASE}/api/stats/trending-count`);
 
         if (isMounted) {
           setData(res.data || []);

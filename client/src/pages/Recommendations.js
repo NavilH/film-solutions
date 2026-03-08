@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE } from "../config";
 
 const Recommendations = ({ userId = 1 }) => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/users/${userId}/recommendations")
+    axios.get(`${API_BASE}/api/users/${userId}/recommendations`)
       .then(response => setMovies(response.data))
       .catch(error => console.error("Error fetching recommendations:", error));
   }, [userId]);

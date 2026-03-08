@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE } from "../config";
 import {
   LineChart,
   Line,
@@ -23,7 +24,7 @@ const WeeklyTrendChart = () => {
         setLoading(true);
         setError("");
 
-        const res = await axios.get(`/api/stats/weekly-trending`);
+        const res = await axios.get(`${API_BASE}/api/stats/weekly-trending`);
 
         if (isMounted) {
           setData(res.data || []);
