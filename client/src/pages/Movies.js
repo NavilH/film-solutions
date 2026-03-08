@@ -52,7 +52,7 @@ const Movies = () => {
 
   return (
     <div>
-      <h2>🔥 Trending Movies</h2>
+      <h2>🔥 Trending Movies Live</h2>
       {loading ? (
         <p>Loading movies...</p>
       ) : (
