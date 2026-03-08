@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { API_BASE } from "../config";
 const Liked = () => {
     const [liked, setLiked] = useState([]);
     //const userId = 1; 
