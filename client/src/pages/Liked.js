@@ -3,14 +3,15 @@ import axios from "axios";
 
 const Liked = () => {
     const [liked, setLiked] = useState([]);
-    const userId = 1; 
+    //const userId = 1; 
 
     useEffect(() => {
-        axios.get("/api/users/${userId}/liked")
+        axios
+            .get(`${API_BASE}/api/users/1/liked`)
             .then(response => setLiked(response.data))
             .catch(error => console.error("Error fetching Liked:", error));
     }, []);
-
+//something
     return (
         <div>
             <h2>❤️ Liked</h2>
