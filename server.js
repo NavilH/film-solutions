@@ -17,18 +17,14 @@ const PORT = process.env.PORT || 5001;
 const corsOptions = {
   origin: process.env.CORS_ORIGIN?.split(",").map(s => s.trim()) || [
     "http://localhost:3000",
-     "https://www.film-solutions.org",
-      "https://film-solutions.org",
-    ],
+    "https://www.film-solutions.org",
+    "https://film-solutions.org",
+  ],
   methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+  credentials: true,
 };
-const cors = require('cors');
 
-app.use(cors({
-  origin: 'https://www.film-solutions.org',
-  methods: ['GET', 'POST'],
-  credentials: true
-}));
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/stats", statsRoutes);
 

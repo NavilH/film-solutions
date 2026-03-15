@@ -3,8 +3,6 @@ const router = express.Router();
 const db = require("../db/db");
 const axios = require("axios");
 
-const axios = require("axios");
-
 router.get("/:user_id/recommendations", async (req, res) => {
   const { user_id } = req.params;
   const TMDB_API_KEY = process.env.TMDB_API_KEY;
@@ -43,8 +41,16 @@ router.get("/:user_id/recommendations", async (req, res) => {
       }
     }
 
-    const topGenres = Object.keys(genreCounts).slice(0, 3).join(',');
-    const topCast = Object.keys(castCounts).slice(0, 3).join(',');
+    const topGenres = Object.entries(genreCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([id]) => id)
+      .join(',');
+    const topCast = Object.entries(castCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([id]) => id)
+      .join(',');
 
     // Step 2: Discover movies based on top genres and cast
     try {

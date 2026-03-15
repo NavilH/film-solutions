@@ -81,10 +81,11 @@ router.get("/:user_id/watchlist", (req, res) => {
  * Remove a movie from the user's watchlist
  */
 router.delete("/:user_id/watchlist/:watchlist_id", (req, res) => {
-    const { watchlist_id } = req.params;
+    const { user_id, watchlist_id } = req.params;
 
-    db.run("DELETE FROM watchlist WHERE id = ?", [watchlist_id], function (err) {
+    db.run("DELETE FROM watchlist WHERE id = ? AND user_id = ?", [watchlist_id, user_id], function (err) {
         if (err) return res.status(500).json({ error: err.message });
+        if (this.changes === 0) return res.status(404).json({ error: "Item not found or does not belong to this user" });
 
         res.json({ message: "Movie removed from watchlist" });
     });
