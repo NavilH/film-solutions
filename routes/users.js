@@ -91,6 +91,48 @@ router.delete("/:user_id/watchlist/:watchlist_id", (req, res) => {
     });
 });
 
+/**
+ * POST /api/users/:user_id/liked
+ * Add a movie to the user's liked list
+ */
+router.post("/:user_id/liked", (req, res) => {
+  const userId = Number(req.params.user_id);
+  const { movie_id, title, poster_url } = req.body;
+
+  if (!movie_id || !title || !poster_url) {
+    return res.status(400).json({ error: "All movie details are required" });
+  }
+
+  db.run(
+    `INSERT OR IGNORE INTO liked (user_id, movie_id, title, poster_url)
+     VALUES (?, ?, ?, ?)`,
+    [userId, movie_id, title, poster_url],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+
+      if (this.changes === 0) {
+        return res.status(200).json({ message: "Already liked" });
+      }
+
+      return res.status(201).json({ message: "Added to liked" });
+    }
+  );
+});
+
+/**
+ * GET /api/users/:user_id/liked
+ * Retrieve a user's liked movies
+ */
+router.get("/:user_id/liked", (req, res) => {
+  const { user_id } = req.params;
+
+  db.all("SELECT * FROM liked WHERE user_id = ?", [user_id], (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+
+    res.json(rows);
+  });
+});
+
 const axios = require("axios"); // add to the top if not already imported
 
 router.get("/:user_id/recommendations", async (req, res) => {

@@ -30,7 +30,7 @@ const Movies = () => {
     try {
       setLoadingId(movieId);
 
-      const response = await axios.post(`${API_BASE}/api/users/liked`, {
+      const response = await axios.post(`${API_BASE}/api/users/1/liked`, {
         movie_id: movieId,
         title: movie.title,
         poster_url: movie.poster_url,
