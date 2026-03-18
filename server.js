@@ -6,6 +6,7 @@ const cors = require("cors");
 const moviesModule = require("./routes/movies");
 const userRoutes = require("./routes/users");
 const statsRoutes = require("./routes/stats");
+const authRoutes = require("./routes/auth");
 
 
 console.log("Dependencies loaded...");
@@ -31,6 +32,7 @@ app.use("/api/stats", statsRoutes);
 console.log("Middleware applied...");
 
 // Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/movies", moviesModule.router);
 app.use("/api/users", userRoutes);
 

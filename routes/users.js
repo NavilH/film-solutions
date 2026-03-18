@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../db/db"); // Import database connection
 const router = express.Router();
+const authMiddleware = require("../middleware/auth");
 
 /**
  * POST /api/users
@@ -95,7 +96,7 @@ router.delete("/:user_id/watchlist/:watchlist_id", (req, res) => {
  * POST /api/users/:user_id/liked
  * Add a movie to the user's liked list
  */
-router.post("/:user_id/liked", (req, res) => {
+router.post("/:user_id/liked", authMiddleware, (req, res) => {
   const userId = Number(req.params.user_id);
   const { movie_id, title, poster_url } = req.body;
 
@@ -123,7 +124,7 @@ router.post("/:user_id/liked", (req, res) => {
  * GET /api/users/:user_id/liked
  * Retrieve a user's liked movies
  */
-router.get("/:user_id/liked", (req, res) => {
+router.get("/:user_id/liked", authMiddleware, (req, res) => {
   const { user_id } = req.params;
 
   db.all("SELECT * FROM liked WHERE user_id = ?", [user_id], (err, rows) => {

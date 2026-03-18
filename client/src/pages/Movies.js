@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { API_BASE } from "../config";
+import { useAuth } from "../context/AuthContext";
+import api from "../api";
 import toast from "react-hot-toast";
 
 const Movies = () => {
@@ -8,10 +8,11 @@ const Movies = () => {
   const [loading, setLoading] = useState(true);
   const [loadingId, setLoadingId] = useState(null);
   const [addedIds, setAddedIds] = useState(new Set());
+  const { user } = useAuth();
 
   useEffect(() => {
-    axios
-      .get(`${API_BASE}/api/stats/current-trending`)
+    api
+      .get("/api/stats/current-trending")
       .then((response) => {
         setMovies(response.data);
         setLoading(false);
@@ -23,14 +24,18 @@ const Movies = () => {
   }, []);
 
   const addToLiked = async (movie) => {
-    const movieId = movie.movie_id ?? movie.id;
+    if (!user) {
+      toast.error("Sign in to like movies");
+      return;
+    }
 
+    const movieId = movie.movie_id ?? movie.id;
     if (addedIds.has(movieId)) return;
 
     try {
       setLoadingId(movieId);
 
-      const response = await axios.post(`${API_BASE}/api/users/1/liked`, {
+      const response = await api.post(`/api/users/${user.userId}/liked`, {
         movie_id: movieId,
         title: movie.title,
         poster_url: movie.poster_url,
@@ -71,8 +76,8 @@ const Movies = () => {
                   {loadingId === movieId
                     ? "Liking..."
                     : addedIds.has(movieId)
-                    ? "❤️Liked"
-                    : "🤍Like"}
+                    ? "❤️ Liked"
+                    : "🤍 Like"}
                 </button>
               </div>
             );

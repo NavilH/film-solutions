@@ -80,6 +80,8 @@ db.run(`
   ON movie_genres_history(run_id)
 `);
 
+// Add password column to users if it doesn't exist yet (migration)
+db.run(`ALTER TABLE users ADD COLUMN password TEXT`, () => {});
 
 });
 
