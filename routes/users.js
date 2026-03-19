@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const db = require("../db/db"); // Import database connection
 const router = express.Router();
 const authMiddleware = require("../middleware/auth");
@@ -35,66 +36,8 @@ router.get("/:user_id", (req, res) => {
 });
 
 /**
- * POST /api/users/:user_id/watchlist
- * Add a movie to the user's watchlist
- */
-router.post("/:user_id/watchlist", (req, res) => {
-  const userId = Number(req.params.user_id);
-  const { movie_id, title, poster_url } = req.body;
-
-  if (!movie_id || !title || !poster_url) {
-    return res.status(400).json({ error: "All movie details are required" });
-  }
-
-  db.run(
-    `INSERT OR IGNORE INTO watchlist (user_id, movie_id, title, poster_url)
-     VALUES (?, ?, ?, ?)`,
-    [userId, movie_id, title, poster_url],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-
-      if (this.changes === 0) {
-        return res.status(200).json({ message: "Already in watchlist" });
-      }
-
-      return res.status(201).json({ message: "Added to watchlist" });
-    }
-  );
-});
-
-
-/**
- * GET /api/users/:user_id/watchlist
- * Retrieve a user's watchlist
- */
-router.get("/:user_id/watchlist", (req, res) => {
-    const { user_id } = req.params;
-
-    db.all("SELECT * FROM watchlist WHERE user_id = ?", [user_id], (err, rows) => {
-        if (err) return res.status(500).json({ error: err.message });
-
-        res.json(rows);
-    });
-});
-
-/**
- * DELETE /api/users/:user_id/watchlist/:watchlist_id
- * Remove a movie from the user's watchlist
- */
-router.delete("/:user_id/watchlist/:watchlist_id", (req, res) => {
-    const { user_id, watchlist_id } = req.params;
-
-    db.run("DELETE FROM watchlist WHERE id = ? AND user_id = ?", [watchlist_id, user_id], function (err) {
-        if (err) return res.status(500).json({ error: err.message });
-        if (this.changes === 0) return res.status(404).json({ error: "Item not found or does not belong to this user" });
-
-        res.json({ message: "Movie removed from watchlist" });
-    });
-});
-
-/**
  * POST /api/users/:user_id/liked
- * Add a movie to the user's liked list
+ * Add a movie to the user's liked
  */
 router.post("/:user_id/liked", authMiddleware, (req, res) => {
   const userId = Number(req.params.user_id);
@@ -115,31 +58,44 @@ router.post("/:user_id/liked", authMiddleware, (req, res) => {
         return res.status(200).json({ message: "Already liked" });
       }
 
-      return res.status(201).json({ message: "Added to liked" });
+      return res.status(201).json({ message: "Liked" });
     }
   );
 });
 
+
 /**
  * GET /api/users/:user_id/liked
- * Retrieve a user's liked movies
+ * Retrieve a user's liked
  */
 router.get("/:user_id/liked", authMiddleware, (req, res) => {
-  const { user_id } = req.params;
+    const { user_id } = req.params;
 
-  db.all("SELECT * FROM liked WHERE user_id = ?", [user_id], (err, rows) => {
-    if (err) return res.status(500).json({ error: err.message });
+    db.all("SELECT * FROM liked WHERE user_id = ?", [user_id], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
 
-    res.json(rows);
-  });
+        res.json(rows);
+    });
 });
 
-const axios = require("axios"); // add to the top if not already imported
+/**
+ * DELETE /api/users/:user_id/liked/:liked_id
+ * Remove a movie from the user's liked
+ */
+router.delete("/:user_id/liked/:liked_id", (req, res) => {
+    const { liked_id } = req.params;
+
+    db.run("DELETE FROM liked WHERE id = ?", [liked_id], function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+
+        res.json({ message: "Movie removed from liked" });
+    });
+});
 
 router.get("/:user_id/recommendations", async (req, res) => {
   const { user_id } = req.params;
 
-  db.all("SELECT movie_id FROM watchlist WHERE user_id = ?", [user_id], async (err, rows) => {
+  db.all("SELECT movie_id FROM liked WHERE user_id = ?", [user_id], async (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
     if (rows.length === 0) return res.json([]);
 
