@@ -46,7 +46,11 @@ app.get("/", (req, res) => {
 // Start the server
 app.get("/test", (req, res) => res.send("🚀 Server is working!"));
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
 
