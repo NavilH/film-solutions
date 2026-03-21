@@ -5,37 +5,6 @@ const router = express.Router();
 const authMiddleware = require("../middleware/auth");
 
 /**
- * POST /api/users
- * Create a new user
- */
-router.post("/", (req, res) => {
-    const { username } = req.body;
-
-    if (!username) return res.status(400).json({ error: "Username is required" });
-
-    db.run("INSERT INTO users (username) VALUES (?)", [username], function (err) {
-        if (err) return res.status(500).json({ error: err.message });
-
-        res.json({ user_id: this.lastID, username });
-    });
-});
-
-/**
- * GET /api/users/:user_id
- * Get user details
- */
-router.get("/:user_id", (req, res) => {
-    const { user_id } = req.params;
-
-    db.get("SELECT * FROM users WHERE id = ?", [user_id], (err, row) => {
-        if (err) return res.status(500).json({ error: err.message });
-        if (!row) return res.status(404).json({ error: "User not found" });
-
-        res.json(row);
-    });
-});
-
-/**
  * POST /api/users/:user_id/liked
  * Add a movie to the user's liked
  */
@@ -78,19 +47,6 @@ router.get("/:user_id/liked", authMiddleware, (req, res) => {
     });
 });
 
-/**
- * DELETE /api/users/:user_id/liked/:liked_id
- * Remove a movie from the user's liked
- */
-router.delete("/:user_id/liked/:liked_id", (req, res) => {
-    const { liked_id } = req.params;
-
-    db.run("DELETE FROM liked WHERE id = ?", [liked_id], function (err) {
-        if (err) return res.status(500).json({ error: err.message });
-
-        res.json({ message: "Movie removed from liked" });
-    });
-});
 
 router.get("/:user_id/recommendations", async (req, res) => {
   const { user_id } = req.params;
