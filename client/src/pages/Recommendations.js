@@ -5,6 +5,7 @@ import api from "../api";
 const Recommendations = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const { user } = useAuth();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const Recommendations = () => {
       })
       .catch((error) => {
         console.error("Error fetching recommendations:", error);
+        setError("Could not load recommendations. Please try again.");
         setLoading(false);
       });
   }, [user]);
@@ -27,6 +29,8 @@ const Recommendations = () => {
       <h2>🎯 Recommended for You</h2>
       {loading ? (
         <p>Loading...</p>
+      ) : error ? (
+        <p className="error-text">{error}</p>
       ) : (
         <div className="movie-grid">
           {movies.length === 0 ? (

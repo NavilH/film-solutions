@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [loadingId, setLoadingId] = useState(null);
   const [likedMap, setLikedMap] = useState({}); // movieId -> liked row id
   const { user } = useAuth();
@@ -19,6 +20,7 @@ const Movies = () => {
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
+        setError("Could not load movies. Please try again.");
         setLoading(false);
       });
   }, []);
@@ -75,6 +77,8 @@ const Movies = () => {
       <h2>🔥 Trending Movies Live</h2>
       {loading ? (
         <p>Loading movies...</p>
+      ) : error ? (
+        <p className="error-text">{error}</p>
       ) : (
         <div className="movie-grid">
           {movies.map((movie) => {

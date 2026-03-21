@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 const Liked = () => {
   const [liked, setLiked] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [removingId, setRemovingId] = useState(null);
   const { user } = useAuth();
 
@@ -20,6 +21,7 @@ const Liked = () => {
       })
       .catch((error) => {
         console.error("Error fetching Liked:", error);
+        setError("Could not load liked movies. Please try again.");
         setLoading(false);
       });
   }, [user]);
@@ -43,6 +45,8 @@ const Liked = () => {
       <h2>❤️ Liked</h2>
       {loading ? (
         <p>Loading...</p>
+      ) : error ? (
+        <p className="error-text">{error}</p>
       ) : (
         <div className="movie-grid">
           {liked.length === 0 ? (
