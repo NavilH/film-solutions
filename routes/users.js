@@ -56,6 +56,20 @@ const TMDB_GENRE_IDS = {
   "Thriller": 53, "War": 10752, "Western": 37,
 };
 
+router.delete("/:user_id/liked/:liked_id", authMiddleware, (req, res) => {
+  const { user_id, liked_id } = req.params;
+
+  db.run(
+    "DELETE FROM liked WHERE id = ? AND user_id = ?",
+    [liked_id, user_id],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      if (this.changes === 0) return res.status(404).json({ error: "Not found" });
+      res.json({ message: "Removed from liked" });
+    }
+  );
+});
+
 router.get("/:user_id/recommendations", async (req, res) => {
   const { user_id } = req.params;
 

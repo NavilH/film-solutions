@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import api from "../api";
+import toast from "react-hot-toast";
 
 const Liked = () => {
   const [liked, setLiked] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [removingId, setRemovingId] = useState(null);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -22,6 +24,20 @@ const Liked = () => {
       });
   }, [user]);
 
+  const removeLiked = async (likedId) => {
+    setRemovingId(likedId);
+    try {
+      await api.delete(`/api/users/${user.userId}/liked/${likedId}`);
+      setLiked((prev) => prev.filter((m) => m.id !== likedId));
+      toast("Removed from Liked", { icon: "💔" });
+    } catch (error) {
+      console.error("Error removing liked:", error);
+      toast.error("Could not remove movie");
+    } finally {
+      setRemovingId(null);
+    }
+  };
+
   return (
     <div>
       <h2>❤️ Liked</h2>
@@ -33,9 +49,15 @@ const Liked = () => {
             <p>Liked is empty. Like some movies!</p>
           ) : (
             liked.map((movie) => (
-              <div key={movie.movie_id ?? movie.id} className="movie-card">
+              <div key={movie.id} className="movie-card">
                 <img src={movie.poster_url} alt={movie.title} />
                 <h3>{movie.title}</h3>
+                <button
+                  onClick={() => removeLiked(movie.id)}
+                  disabled={removingId === movie.id}
+                >
+                  {removingId === movie.id ? "Removing..." : "💔 Unlike"}
+                </button>
               </div>
             ))
           )}
