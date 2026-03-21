@@ -27,7 +27,7 @@ router.post("/:user_id/liked", authMiddleware, (req, res) => {
         return res.status(200).json({ message: "Already liked" });
       }
 
-      return res.status(201).json({ message: "Liked" });
+      return res.status(201).json({ message: "Liked", id: this.lastID });
     }
   );
 });

@@ -59,7 +59,7 @@ const Movies = () => {
           toast("Already liked", { icon: "ℹ️" });
         } else {
           setLikedMap((prev) => ({ ...prev, [movieId]: response.data.id }));
-          toast.success("Added to Liked");
+          toast.success("Added to Liked ❤️");
         }
       }
     } catch (error) {
