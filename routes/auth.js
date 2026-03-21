@@ -23,8 +23,14 @@ router.post("/register", async (req, res) => {
   if (!username || !password)
     return res.status(400).json({ error: "Username and password are required" });
 
-  if (password.length < 6)
-    return res.status(400).json({ error: "Password must be at least 6 characters" });
+  if (username.length < 3 || username.length > 30)
+    return res.status(400).json({ error: "Username must be between 3 and 30 characters" });
+
+  if (!/^[a-zA-Z0-9_-]+$/.test(username))
+    return res.status(400).json({ error: "Username can only contain letters, numbers, underscores, and hyphens" });
+
+  if (password.length < 6 || password.length > 72)
+    return res.status(400).json({ error: "Password must be between 6 and 72 characters" });
 
   try {
     const hashed = await bcrypt.hash(password, 10);

@@ -77,7 +77,7 @@ const Home = () => {
 
           <div className="stack-card">
             <h3>Database</h3>
-            <p>SQLite, Prisma</p>
+            <p>SQLite</p>
           </div>
 
           <div className="stack-card">
