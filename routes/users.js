@@ -58,17 +58,14 @@ router.get("/:user_id/recommendations", async (req, res) => {
     const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
     try {
-      const recommendedMovies = [];
-
-      for (const row of rows) {
-        const response = await axios.get(`https://api.themoviedb.org/3/movie/${row.movie_id}/similar`, {
+      const results = await Promise.all(
+        rows.map(row => axios.get(`https://api.themoviedb.org/3/movie/${row.movie_id}/similar`, {
           params: { api_key: TMDB_API_KEY }
-        });
+        }))
+      );
 
-        recommendedMovies.push(...response.data.results.slice(0, 2)); // Take top 2 from each
-      }
+      const recommendedMovies = results.flatMap(r => r.data.results.slice(0, 2));
 
-      // Optional: remove duplicates
       const seen = new Set();
       const uniqueRecs = recommendedMovies.filter(movie => {
         if (seen.has(movie.id)) return false;
