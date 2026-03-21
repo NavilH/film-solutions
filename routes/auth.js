@@ -2,7 +2,14 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const rateLimit = require("express-rate-limit");
 const db = require("../db/db");
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 10,
+  message: { error: "Too many login attempts. Please try again in 15 minutes." },
+});
 
 const JWT_SECRET = process.env.JWT_SECRET || "film-solutions-secret";
 
@@ -48,7 +55,7 @@ router.post("/register", async (req, res) => {
 /**
  * POST /api/auth/login
  */
-router.post("/login", (req, res) => {
+router.post("/login", loginLimiter, (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password)
