@@ -11,7 +11,8 @@ const loginLimiter = rateLimit({
   message: { error: "Too many login attempts. Please try again in 15 minutes." },
 });
 
-const JWT_SECRET = process.env.JWT_SECRET || "film-solutions-secret";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) throw new Error("JWT_SECRET environment variable is not set");
 
 /**
  * POST /api/auth/register
